@@ -2,7 +2,7 @@ datasets: 'modelnet40'
 data_root: ''
 num_classes: 40
 input_features_dim: 3
-batch_size: 16
+batch_size: 1
 num_points: 10000
 num_workers: 4
 # data augmentation
@@ -67,6 +67,6 @@ rng_seed: 0
 # Local Aggregation options
 # ---------------------------------------------------------------------------- #
 local_aggregation_type: 'invopoint'
-pseudo_grid:
+invopoint:
   reduction: 0.5
   output_conv: False

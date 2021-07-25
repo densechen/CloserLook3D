@@ -537,7 +537,8 @@ class InvopointOp(nn.Module):
         Returns:
            output features of query points: [B, C_out, N1]
         """
-        query_features = gather_points(query_xyz, support_features)
+        print(query_mask)
+        query_features = gather_points(support_features.contiguous(), query_mask.int())
 
         _, out_features = self.invopoint(support_xyz, support_features, query_xyz, query_features)
 

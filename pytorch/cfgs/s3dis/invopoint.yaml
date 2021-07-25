@@ -74,6 +74,6 @@ rng_seed: 0
 # Local Aggregation options
 # ---------------------------------------------------------------------------- #
 local_aggregation_type: 'invopoint'
-pseudo_grid:
+invopoint:
   reduction: 0.5
   output_conv: False

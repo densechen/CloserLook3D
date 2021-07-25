@@ -101,6 +101,10 @@ config.pseudo_grid.KP_extent = 1.0
 config.pseudo_grid.num_kernel_points = 15
 config.pseudo_grid.convolution_mode = 'sum'
 config.pseudo_grid.output_conv = False
+# invopoint
+config.invopoint = edict()
+config.invopoint.output_conv = False
+config.invopoint.reduction = 0.5
 
 
 def update_config(config_file):

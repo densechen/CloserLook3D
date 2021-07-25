@@ -537,14 +537,14 @@ class InvopointOp(nn.Module):
         Returns:
            output features of query points: [B, C_out, N1]
         """
-        neighborhood_features, _, _ = self.grouper(query_xyz, support_xyz, query_mask,
-                                                                                   support_mask, support_features)
+        neighborhood_features, _, _ = self.grouper(
+            query_xyz, support_xyz, query_mask,
+            support_mask, support_features)
         # B C N
-        query_features = torch.unsqueeze(
-            neighborhood_features[..., 0], -1)
+        query_features = torch.unsqueeze(neighborhood_features[..., 0], -1)
 
-
-        _, out_features = self.invopoint(support_xyz, support_features, query_xyz, query_features)
+        _, out_features = self.invopoint(
+            support_xyz, support_features, query_xyz, query_features)
 
         if self.output_conv:
             out_features = self.out_conv(out_features)

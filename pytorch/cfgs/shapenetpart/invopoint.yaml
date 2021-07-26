@@ -19,7 +19,7 @@ num_parts:
   - 3
   - 3
 input_features_dim: 3
-batch_size: 16
+batch_size: 6
 num_points: 2048
 num_workers: 4
 # data augmentation

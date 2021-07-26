@@ -2,7 +2,7 @@ datasets: 's3dis'
 data_root: ''
 num_classes: 13
 input_features_dim: 4
-batch_size: 8
+batch_size: 6
 num_points: 15000
 num_workers: 4
 # data augmentation

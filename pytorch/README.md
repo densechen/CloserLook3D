@@ -1,4 +1,5 @@
 # Invopoint
+**Distribution training is not supportted yet because of mmdetection3d.**
 
 ## Download data
 
@@ -9,26 +10,22 @@ hdfs dfs -copyToLocal hdfs://harunava/home/byte_ailab_vc/user/chendengsheng/invo
 ## ModelNet40
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --master_port 3994 --nproc_per_node 1 \
-    function/train_modelnet_dist.py --cfg cfgs/modelnet/invopoint.yaml --log_dir log_modelnet40_invopoint
+CUDA_VISIBLE_DEVICES=0 python function/train_modelnet.py --cfg cfgs/modelnet/invopoint.yaml --log_dir log_modelnet40_invopoint
 ```
 
 #### PartNet
 ```bash
-CUDA_VISIBLE_DEVICES=1 python -m torch.distributed.launch --master_port 3995 --nproc_per_node 1 \
-    function/train_partnet_dist.py --cfg cfgs/partnet/invopoint.yaml --log_dir log_partnet_invopoint
+CUDA_VISIBLE_DEVICES=1 python function/train_partnet.py --cfg cfgs/partnet/invopoint.yaml --log_dir log_partnet_invopoint
 ```
 
 #### ShapeNetPart
 ```bash
-CUDA_VISIBLE_DEVICES=2 python -m torch.distributed.launch --master_port 3996 --nproc_per_node 1 \
-    function/train_shapenetpart_dist.py --cfg cfgs/shapenetpart/invopoint.yaml --log_dir log_shapenetpart_invopoint
+CUDA_VISIBLE_DEVICES=2 python function/train_shapenetpart.py --cfg cfgs/shapenetpart/invopoint.yaml --log_dir log_shapenetpart_invopoint
 ```
 
 #### S3DIS
 ```bash
-CUDA_VISIBLE_DEVICES=3 python -m torch.distributed.launch --master_port 3997 --nproc_per_node 1 \
-    function/train_s3dis_dist.py --cfg cfgs/s3dis/invopoint.yaml --log_dir log_s3dis_invopoint
+CUDA_VISIBLE_DEVICES=3 python function/train_s3dis.py --cfg cfgs/s3dis/invopoint.yaml --log_dir log_s3dis_invopoint
 ```
 
 ### Evaluating

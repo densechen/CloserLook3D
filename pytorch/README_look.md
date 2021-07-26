@@ -84,7 +84,7 @@ The file structure should look like:
 ├── ops
 └── utils
 ```
-
+hdfs dfs -ls hdfs://harunava/home/byte_ailab_vc/user/chendengsheng/s3dis_processed/
 ### Compile custom operators and pre-processing data
 ```bash
 sh init.sh

@@ -20,7 +20,7 @@ num_parts:
   - 11
   - 6
 input_features_dim: 3
-batch_size: 8
+batch_size: 6
 num_workers: 4
 # data augmentation
 x_angle_range: 0.0

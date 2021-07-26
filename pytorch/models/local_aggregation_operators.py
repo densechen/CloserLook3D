@@ -504,7 +504,7 @@ class InvopointOp(nn.Module):
         self.invopoint = Invopoint(
             in_channels     = self.in_channels,
             out_channels    = self.out_channels,
-            kernel_size     = 4,
+            kernel_size     = 3,
             stride          = 1,
             samples         = self.nsample,
             min_radius      = 0.0005,
@@ -541,10 +541,11 @@ class InvopointOp(nn.Module):
             query_xyz, support_xyz, query_mask,
             support_mask, support_features)
         # B C N
-        query_features = torch.unsqueeze(neighborhood_features[..., 0], -1)
+        query_features = neighborhood_features[..., 0]
 
         _, out_features = self.invopoint(
-            support_xyz, support_features, query_xyz, query_features)
+            support_xyz, support_features, 
+            query_xyz, query_features)
 
         if self.output_conv:
             out_features = self.out_conv(out_features)

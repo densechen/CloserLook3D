@@ -2,7 +2,7 @@ datasets: 'modelnet40'
 data_root: ''
 num_classes: 40
 input_features_dim: 3
-batch_size: 1
+batch_size: 6
 num_points: 10000
 num_workers: 4
 # data augmentation

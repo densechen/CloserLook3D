@@ -22,7 +22,7 @@ from torch.utils.tensorboard import SummaryWriter
 from models import build_classification
 from datasets import ModelNet40Cls
 import datasets.data_utils as d_utils
-from utils.util import AverageMeter, accuracy, reduce_tensor
+from utils.util import AverageMeter, accuracy
 from utils.lr_scheduler import get_scheduler
 from utils.logger import setup_logger
 from utils.config import config, update_config
@@ -328,9 +328,6 @@ def validate(test_loader, model, criterion, config, num_votes=10):
                 loss = criterion(pred, target)
                 acc1 = accuracy(pred, target, topk=(1,))[0]
 
-                acc1 = reduce_tensor(acc1)
-                loss = reduce_tensor(loss)
-
                 losses.update(loss.item(), points.size(0))
                 top1.update(acc1.item(), points.size(0))
 
@@ -356,7 +353,7 @@ def validate(test_loader, model, criterion, config, num_votes=10):
             else:
                 vote_preds += preds
             vote_acc1 = accuracy(vote_preds, targets, topk=(1,))[0]
-            vote_acc1 = reduce_tensor(vote_acc1).item()
+            vote_acc1 = vote_acc1.item()
 
             logger.info(f' * Vote{v} Acc@1 {vote_acc1:.3%}')
 

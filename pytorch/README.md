@@ -64,7 +64,7 @@ python function/evaluate_s3dis.py --cfg cfgs/s3dis/invopoint.yaml --load_path <c
 |    PosPool     | 93.0  |
 |    PosPool*    | 93.3  |
 |       -        |   -   |
-|   invopoint    | 80.1  |
+|   invopoint    | 84.0  |
 
 ## S3DIS
 
@@ -86,7 +86,7 @@ python function/evaluate_s3dis.py --cfg cfgs/s3dis/invopoint.yaml --load_path <c
 |    PosPool     |    50.5    |    53.6     |
 |    PosPool*    |    51.1    |    53.7     |
 |       -        |     -      |      -      |
-|   invopoint    |    45.4    |    34.2     |
+|   invopoint    |    50.6    |    34.2     |
 
 ## ShapeNetPart
 
@@ -98,4 +98,4 @@ python function/evaluate_s3dis.py --cfg cfgs/s3dis/invopoint.yaml --load_path <c
 |    PosPool     | 85.9  | 84.6  | 94.6  |
 |    PosPool*    | 86.2  | 84.8  | 94.8  |
 |       -        |   -   |   -   |   -   |
-|   invopoint    | 81.5  | 78.3  | 91.6  |
+|   invopoint    | 82.0  | 78.3  | 92.2  |

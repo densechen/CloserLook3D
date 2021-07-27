@@ -54,37 +54,48 @@ python function/evaluate_s3dis.py --cfg cfgs/s3dis/invopoint.yaml --load_path <c
 
 ## Performance
 
-
 ## ModelNet40
-|Method | Acc | Model |
-|:---:|:---:|:---:|
-|Point-wise MLP| 93.0 |
-|Pseudo Grid| 93.1 |
-|Adapt Weights| 92.9 |
-|PosPool| 93.0 |
-|PosPool*| 93.3 |
+
+|     Method     |  Acc  |
+| :------------: | :---: |
+| Point-wise MLP | 93.0  |
+|  Pseudo Grid   | 93.1  |
+| Adapt Weights  | 92.9  |
+|    PosPool     | 93.0  |
+|    PosPool*    | 93.3  |
+|       -        |   -   |
+|   invopoint    | 80.1  |
 
 ## S3DIS
-|Method | mIoU |
-|:---:|:---:|:---:|
-|Point-wise MLP|  66.3 | 
-|Adapt Weights| 64.5 |
-|PosPool*| 65.5 |
+
+|     Method     | mIoU  |
+| :------------: | :---: |
+| Point-wise MLP | 66.3  |
+| Adapt Weights  | 64.5  |
+|    PosPool*    | 65.5  |
+|       -        |   -   |
+|   invopoint    |   x   |
 
 ## PartNet
-|Method | mIoU (val)| mIoU (test) | 
-|:---:|:---:|:---:|:---:|
-|Point-wise MLP| 49.1 | 82.5 | 
-|Pseudo Grid| 50.6 | 53.3 | 
-|Adapt Weights| 50.5 | 52.9 | 
-|PosPool| 50.5 | 53.6 | 
-|PosPool*| 51.1 | 53.7 | 
+
+|     Method     | mIoU (val) | mIoU (test) |
+| :------------: | :--------: | :---------: |
+| Point-wise MLP |    49.1    |    82.5     |
+|  Pseudo Grid   |    50.6    |    53.3     |
+| Adapt Weights  |    50.5    |    52.9     |
+|    PosPool     |    50.5    |    53.6     |
+|    PosPool*    |    51.1    |    53.7     |
+|       -        |     -      |      -      |
+|   invopoint    |    45.4    |    34.2     |
 
 ## ShapeNetPart
-|Method | mIoU | msIoU | Acc | Model |
-|:---:|:---:|:---:|:---:|:---:|
-|Point-wise MLP| 85.7 | 84.1| 94.5 |
-|Pseudo Grid| 86.0 | 84.3 | 94.6 |
-|Adapt Weights| 85.9 | 84.5 | 94.6 |
-|PosPool| 85.9 | 84.6 | 94.6 |
-|PosPool*| 86.2 | 84.8 | 94.8 |
+
+|     Method     | mIoU  | msIoU |  Acc  |
+| :------------: | :---: | :---: | :---: |
+| Point-wise MLP | 85.7  | 84.1  | 94.5  |
+|  Pseudo Grid   | 86.0  | 84.3  | 94.6  |
+| Adapt Weights  | 85.9  | 84.5  | 94.6  |
+|    PosPool     | 85.9  | 84.6  | 94.6  |
+|    PosPool*    | 86.2  | 84.8  | 94.8  |
+|       -        |   -   |   -   |   -   |
+|   invopoint    | 81.5  | 78.3  | 91.6  |

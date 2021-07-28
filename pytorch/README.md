@@ -21,7 +21,7 @@ CUDA_VISIBLE_DEVICES=1 python function/train_partnet.py --cfg cfgs/partnet/invop
 
 ### ShapeNetPart
 ```bash
-CUDA_VISIBLE_DEVICES=2 python function/train_shapenetpart.py --cfg cfgs/shapenetpart/invopoint.yaml --log_dir log_shapenetpart_invopoint_train
+CUDA_VISIBLE_DEVICES=2 python function/train_shapenetpart.py --cfg cfgs/shapenetpart/invopoint.yaml --log_dir log_shapenetpart_invopoint_train --start_epoch 8 --load_path log_shapenetpart_invopoint_train/shapenetpart/invopoint_1627447389/current.pth
 ```
 
 ### S3DIS

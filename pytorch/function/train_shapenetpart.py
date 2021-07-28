@@ -187,7 +187,7 @@ def main(config):
         assert os.path.isfile(config.load_path)
         load_checkpoint(config, model, optimizer, scheduler)
         logger.info("==> checking loaded ckpt")
-        validate('resume', 'test', test_loader, model, criterion, config)
+        validate('resume test', test_loader, model, criterion, config)
 
     # tensorboard
     summary_writer = SummaryWriter(log_dir=config.log_dir)

@@ -4,29 +4,49 @@
 ## Download data
 
 ```bash
-hdfs dfs -copyToLocal hdfs://harunava/home/byte_ailab_vc/user/chendengsheng/invopoint data
+hdfs dfs -copyToLocal hdfs://harunava/home/byte_ailab_vc/user/chendengsheng/invopoint/data/ShapeNetPart data/
 ```
 ## Train
 
 ### ModelNet40
 
 ```bash
+# NO-DIST VERSION
 CUDA_VISIBLE_DEVICES=0 python function/train_modelnet.py --cfg cfgs/modelnet/invopoint.yaml --log_dir log_modelnet40_invopoint_train
+
+# DIST VERSION
+python -m torch.distributed.launch --master_port 1994 --nproc_per_node 4 \
+    function/train_modelnet_dist.py --cfg cfgs/modelnet/invopoint.yaml --log_dir log_modelnet40_invopoint_train
 ```
 
 ### PartNet
 ```bash
+# NO-DIST VERSION
 CUDA_VISIBLE_DEVICES=1 python function/train_partnet.py --cfg cfgs/partnet/invopoint.yaml --log_dir log_partnet_invopoint_train
+
+# DIST VERSION
+python -m torch.distributed.launch --master_port 1995 --nproc_per_node 4 \
+    function/train_partnet_dist.py --cfg cfgs/partnet/invopoint.yaml --log_dir log_partnet_invopoint_train
 ```
 
 ### ShapeNetPart
 ```bash
-CUDA_VISIBLE_DEVICES=2 python function/train_shapenetpart.py --cfg cfgs/shapenetpart/invopoint.yaml --log_dir log_shapenetpart_invopoint_train --start_epoch 8 --load_path log_shapenetpart_invopoint_train/shapenetpart/invopoint_1627447389/current.pth
+# NO-DIST VERSION
+CUDA_VISIBLE_DEVICES=2 python function/train_shapenetpart.py --cfg cfgs/shapenetpart/invopoint.yaml --log_dir log_shapenetpart_invopoint_train
+
+# DIST VERSION
+python -m torch.distributed.launch --master_port 1996 --nproc_per_node 4 \
+    function/train_shapenetpart_dist.py --cfg cfgs/shapenetpart/invopoint.yaml --log_dir log_shapenetpart_invopoint_train
 ```
 
 ### S3DIS
 ```bash
+# NO-DIST VERSION
 CUDA_VISIBLE_DEVICES=3 python function/train_s3dis.py --cfg cfgs/s3dis/invopoint.yaml --log_dir log_s3dis_invopoint_train
+
+# DIST VERSION
+python -m torch.distributed.launch --master_port 1997 --nproc_per_node 4 \
+    function/train_s3dis_dist.py --cfg cfgs/s3dis/invopoint.yaml --log_dir log_s3dis_invopoint_train
 ```
 
 ## Evaluate
@@ -80,7 +100,7 @@ python function/evaluate_s3dis.py --cfg cfgs/s3dis/invopoint.yaml --load_path <c
 
 |     Method     | mIoU (val) | mIoU (test) |
 | :------------: | :--------: | :---------: |
-| Point-wise MLP |    49.1    |    82.5     |
+| Point-wise MLP |    49.1    |    52.5     |
 |  Pseudo Grid   |    50.6    |    53.3     |
 | Adapt Weights  |    50.5    |    52.9     |
 |    PosPool     |    50.5    |    53.6     |

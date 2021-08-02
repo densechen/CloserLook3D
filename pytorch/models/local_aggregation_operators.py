@@ -8,7 +8,6 @@ sys.path.append(ROOT_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'ops', 'pt_custom_ops'))
 
 from invopoint import Invopoint
-from invopoint.invopoint import gather_points
 from pt_utils import MaskedQueryAndGroup
 from .utlis import create_kernel_points, radius_gaussian, weight_variable
 import torch.nn.functional as F
@@ -504,12 +503,9 @@ class InvopointOp(nn.Module):
         self.invopoint = Invopoint(
             in_channels     = self.in_channels,
             out_channels    = self.out_channels,
-            kernel_size     = 3,
             stride          = 1,
             samples         = self.nsample,
-            min_radius      = 0.0005,
             max_radius      = self.radius,
-            groups          = 1,
             reduction_ratio = self.reduction,
             with_output_mlp = not self.output_conv,
         )
@@ -537,15 +533,8 @@ class InvopointOp(nn.Module):
         Returns:
            output features of query points: [B, C_out, N1]
         """
-        neighborhood_features, _, _ = self.grouper(
-            query_xyz, support_xyz, query_mask,
-            support_mask, support_features)
-        # B C N
-        query_features = neighborhood_features[..., 0]
-
         _, out_features = self.invopoint(
-            support_xyz, support_features, 
-            query_xyz, query_features)
+            support_xyz, support_features, query_xyz)
 
         if self.output_conv:
             out_features = self.out_conv(out_features)

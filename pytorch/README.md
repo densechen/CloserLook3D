@@ -53,7 +53,11 @@ python -m torch.distributed.launch --master_port 1997 --nproc_per_node 4 \
 
 ### ModelNet40
 ```bash
-python function/evaluate_modelnet.py --cfg cfgs/modelnet/invopoint.yaml --load_path <checkpoint> --log_dir log_modelnet40_invopoint_eval
+python function/evaluate_modelnet.py --cfg cfgs/modelnet/invopoint.yaml --load_path log_modelnet40_invopoint_train/modelnet40/invopoint_1627870800/ckpt_epoch_480.pth --log_dir log_modelnet40_invopoint_eval
+
+python -m torch.distributed.launch --master_port 1995 --nproc_per_node 1 \
+    function/evaluate_modelnet_dist.py --cfg cfgs/modelnet/invopoint.yaml --load_path log_modelnet40_invopoint_train/modelnet40/invopoint_1627870800/ckpt_epoch_480.pth --log_dir log_modelnet40_invopoint_eval
+ 
  ```
 
 ### PartNet
@@ -84,7 +88,7 @@ python function/evaluate_s3dis.py --cfg cfgs/s3dis/invopoint.yaml --load_path <c
 |    PosPool     | 93.0  |
 |    PosPool*    | 93.3  |
 |       -        |   -   |
-|   invopoint    | 84.0  |
+|   invopoint    | 91.532  |
 
 ## S3DIS
 
@@ -94,7 +98,7 @@ python function/evaluate_s3dis.py --cfg cfgs/s3dis/invopoint.yaml --load_path <c
 | Adapt Weights  | 64.5  |
 |    PosPool*    | 65.5  |
 |       -        |   -   |
-|   invopoint    |   x   |
+|   invopoint    |   48.206   |
 
 ## PartNet
 

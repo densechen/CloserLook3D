@@ -72,7 +72,10 @@ python function/evaluate_shapenetpart.py --cfg cfgs/shapenetpart/invopoint.yaml 
 
 ### S3DIS
 ```bash
-python function/evaluate_s3dis.py --cfg cfgs/s3dis/invopoint.yaml --load_path <checkpoint> --log_dir log_s3dis_invopoint_train
+python function/evaluate_s3dis.py --cfg cfgs/s3dis/invopoint.yaml --load_path <checkpoint> --log_dir log_s3dis_invopoint_eval
+
+python -m torch.distributed.launch --master_port 1997 --nproc_per_node 1 \
+    function/evaluate_s3dis_dist.py --cfg cfgs/s3dis/invopoint.yaml --load_path log_s3dis_invopoint_train/s3dis/invopoint_1627955692/current.pth --log_dir log_s3dis_invopoint_eval
 ```
 
 
@@ -122,4 +125,4 @@ python function/evaluate_s3dis.py --cfg cfgs/s3dis/invopoint.yaml --load_path <c
 |    PosPool     | 85.9  | 84.6  | 94.6  |
 |    PosPool*    | 86.2  | 84.8  | 94.8  |
 |       -        |   -   |   -   |   -   |
-|   invopoint    | 82.0  | 78.3  | 92.2  |
+|   invopoint    | 84.713  | 80.691  | 94.018  |
